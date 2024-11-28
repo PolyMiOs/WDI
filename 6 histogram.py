@@ -20,14 +20,20 @@ def histogram(binersy, kaunter):
         przedzial = 10000 // biners
         sumy = [0] * biners
         for i in range(biners):
-            sumy[i] = sum(kaunter[0+i*przedzial+i:(i+1)*przedzial])
+            x = 1
+            if not i:
+                x = 0
+            sumy[i] = sum(kaunter[0+i*przedzial+x:(i+1)*przedzial])
         if max(sumy) < 50:
             break
         
         
     for i in range(biners):
+        x=1
+        if not i:
+            x = 0
         sumy[i] = "=" * sumy[i]
-        print(f"[{0+i*przedzial+i} - {(i+1)*przedzial}]   {sumy[i]}")
+        print(f"[{0+i*przedzial+x:^4} - {(i+1)*przedzial}]   {sumy[i]}")
 
 
 biners = [3,5,10,20,50,100]        
