@@ -1,16 +1,14 @@
 from itertools import combinations
 
 def gudtroj(a, b, c):
-    def kwadrt(p1, p2):
-        return (p1[0] - p2[0])**2 + (p1[1] - p2[1])**2
     
     def rondoosi(p1, p2):
         return p1[0] != p2[0] and p1[1] != p2[1]
     
     sides = sorted([
-        (kwadrt(a, b), a, b),
-        (kwadrt(b, c), b, c),
-        (kwadrt(a, c), a, c)
+        ((a[0] - b[0])**2 + (a[1] - b[1])**2, a, b),
+        ((a[0] - b[0])**2 + (a[1] - b[1])**2, b, c),
+        ((a[0] - b[0])**2 + (a[1] - b[1])**2, a, c)
     ])
     
     if sides[0][0] + sides[1][0] == sides[2][0]:
@@ -37,6 +35,9 @@ def chek(data):
             if all(not punktwtrojko(p, a, b, c) for p in data if p not in {a, b, c}):
                 return True
     return False
+
+
+
 
 data = [(0, 0), (3, 3), (6, 0), (2, 2)]
 data1 = [(7,5),(13,5),(14,7),(14,6),(12,8)]
